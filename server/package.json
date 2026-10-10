@@ -1,0 +1,33 @@
+{
+  "name": "civic-connect-server",
+  "version": "1.0.0",
+  "description": "CivicConnect API for civic issue reporting in West Bengal",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "create-admin": "node src/scripts/createAdmin.js"
+  },
+  "keywords": [
+    "civic-connect",
+    "west-bengal",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongo": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongoose": "^9.10.4",
+    "cloudinary": "^2.8.0",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

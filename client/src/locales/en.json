@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "reportIssue": "Report Issue",
+    "history": "History",
+    "publicIssues": "Public Issues",
+    "logout": "Logout"
+  },
+
+  "dashboard": {
+    "welcome": "Welcome back",
+    "activeComplaints": "Active complaints",
+    "noComplaints": "No active complaints",
+    "reportIssue": "Report an issue"
+  },
+
+  "report": {
+    "title": "Report an issue",
+    "help": "One physical issue creates one work item. If the same issue already exists, you can mark that you are also affected.",
+    "category": "Category",
+    "selectCategory": "Select a category",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the problem clearly…",
+    "location": "Exact location",
+    "locationHelp": "Allow GPS or drag the pin to the correct place.",
+    "beforePhoto": "Before photo",
+    "photoHelp": "Exactly one image, max 5 MB.",
+    "submit": "Submit complaint",
+    "submitting": "Submitting…"
+  },
+
+  "categories": {
+    "streetlights": "Streetlights",
+    "roads": "Roads & Potholes",
+    "garbage": "Garbage & Waste Management",
+    "water": "Water Supply",
+    "taps": "Public Water Taps",
+    "toilets": "Public Toilets & Sanitation",
+    "trees": "Trees & Green Spaces",
+    "traffic": "Traffic Signals & Road Signs",
+    "transport": "Public Transport Infrastructure",
+    "footpaths": "Footpaths & Public Infrastructure",
+    "electrical": "Electrical Infrastructure",
+    "drainage": "Drainage & Waterlogging",
+    "other": "Other"
+  },
+
+  "duplicate": {
+    "title": "This issue is already reported",
+    "message": "We found an existing complaint for the same type of issue nearby.",
+    "affected": "citizens affected",
+    "question": "Are you also affected by this issue?",
+    "support": "I'm also affected",
+    "supporting": "Adding your support…",
+    "view": "View existing issue",
+    "close": "Close",
+    "successTitle": "You're also affected",
+    "successMessage": "Your support has been added to the existing complaint. No duplicate complaint was created.",
+    "dashboard": "Go to dashboard"
+  },
+
+  "errors": {
+    "location": "Please select the exact issue location",
+    "photo": "Please upload the before photo",
+    "submit": "Could not submit complaint"
+  }
+}
