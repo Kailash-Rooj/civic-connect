@@ -5,39 +5,35 @@ import Layout from "./components/Layout";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import CitizenLogin from "./pages/CitizenLogin";
+import AdminLogin from "./pages/AdminLogin";
 import Register from "./pages/Register";
+
 import CitizenDashboard from "./pages/CitizenDashboard";
 import ReportIssue from "./pages/ReportIssue";
 import History from "./pages/History";
+
 import PublicIssues from "./pages/PublicIssues";
 import IssueDetails from "./pages/IssueDetails";
+import IssuesMap from "./pages/IssuesMap";
+
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminIssues from "./pages/AdminIssues";
-import IssuesMap from "./pages/IssuesMap";
 
 export default function App() {
   return (
     <Layout>
       <Routes>
-
         {/* PUBLIC */}
         <Route path="/" element={<Home />} />
 
-        <Route
-          path="/issues"
-          element={<PublicIssues />}
-        />
+        <Route path="/issues" element={<PublicIssues />} />
 
-        <Route
-          path="/issues/map"
-          element={<IssuesMap />}
-        />
-        <Route
-          path="/issues/:id"
-          element={<IssueDetails />}
-        />
+        <Route path="/issues/map" element={<IssuesMap />} />
 
-        {/* GUEST */}
+        <Route path="/issues/:id" element={<IssueDetails />} />
+
+        {/* LOGIN */}
         <Route
           path="/login"
           element={
@@ -47,6 +43,25 @@ export default function App() {
           }
         />
 
+        <Route
+          path="/login/citizen"
+          element={
+            <GuestRoute>
+              <CitizenLogin />
+            </GuestRoute>
+          }
+        />
+
+        <Route
+          path="/login/admin"
+          element={
+            <GuestRoute>
+              <AdminLogin />
+            </GuestRoute>
+          }
+        />
+
+        {/* REGISTER */}
         <Route
           path="/register"
           element={
@@ -104,11 +119,7 @@ export default function App() {
         />
 
         {/* FALLBACK */}
-        <Route
-          path="*"
-          element={<Home />}
-        />
-
+        <Route path="*" element={<Home />} />
       </Routes>
     </Layout>
   );
