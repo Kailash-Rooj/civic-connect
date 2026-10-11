@@ -20,7 +20,7 @@ export default function History() {
         Complaint history
       </h1>
 
-      <p className="mt-1 text-slate-600">
+      <p className="mt-1 text-slate-600 dark:text-slate-300">
         Resolved issues you reported.
       </p>
 
@@ -35,7 +35,7 @@ export default function History() {
         ))}
 
         {!items.length && (
-          <div className="rounded-2xl border bg-white p-10 text-center text-slate-500">
+          <div className="rounded-2xl border bg-white dark:bg-slate-900 p-10 text-center text-slate-500 dark:text-slate-400">
             No resolved complaints yet.
           </div>
         )}

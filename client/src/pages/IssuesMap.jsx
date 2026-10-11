@@ -105,7 +105,7 @@ export default function IssuesMap() {
   }, []);
 
   return (
-    <div className="relative h-[calc(100dvh-65px)] min-h-[420px] w-full overflow-hidden bg-slate-100">
+    <div className="relative h-[calc(100dvh-65px)] min-h-[420px] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
       {/* Map */}
       <MapContainer
         center={[22.5726, 88.3639]}
@@ -149,26 +149,26 @@ export default function IssuesMap() {
       </MapContainer>
 
       {/* Floating heading */}
-      <div className="absolute left-4 top-4 z-[1000] max-w-[calc(100%-32px)] rounded-2xl bg-white/95 p-4 shadow-lg ring-1 ring-slate-200 backdrop-blur sm:left-6 sm:top-6">
-        <div className="flex items-center gap-2 text-teal-800">
+      <div className="absolute left-4 top-4 z-[1000] max-w-[calc(100%-32px)] rounded-2xl bg-white/95 dark:bg-slate-900/95 p-4 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 backdrop-blur sm:left-6 sm:top-6">
+        <div className="flex items-center gap-2 text-teal-800 dark:text-teal-300">
           <MapPin size={20} />
           <h1 className="text-lg font-bold">Civic Issues Map</h1>
         </div>
-        <p className="mt-1 text-sm text-slate-600">
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
           {complaints.length} reported{" "}
           {complaints.length === 1 ? "issue" : "issues"}
         </p>
       </div>
 
       {/* Status legend */}
-      <div className="absolute bottom-5 left-1/2 z-[1000] flex max-w-[calc(100%-24px)] -translate-x-1/2 flex-wrap justify-center gap-x-4 gap-y-2 rounded-2xl bg-white/95 px-4 py-3 shadow-lg ring-1 ring-slate-200 backdrop-blur sm:bottom-6 sm:gap-5 sm:px-5">
+      <div className="absolute bottom-5 left-1/2 z-[1000] flex max-w-[calc(100%-24px)] -translate-x-1/2 flex-wrap justify-center gap-x-4 gap-y-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 px-4 py-3 shadow-lg ring-1 ring-slate-200 dark:ring-slate-700 backdrop-blur sm:bottom-6 sm:gap-5 sm:px-5">
         {Object.entries(statusLabels).map(([status, label]) => (
           <div key={status} className="flex items-center gap-2">
             <span
               className="h-3 w-3 rounded-full"
               style={{ backgroundColor: statusColors[status] }}
             />
-            <span className="whitespace-nowrap text-xs font-medium text-slate-700 sm:text-sm">
+            <span className="whitespace-nowrap text-xs font-medium text-slate-700 dark:text-slate-200 sm:text-sm">
               {label}
             </span>
           </div>
@@ -177,18 +177,18 @@ export default function IssuesMap() {
 
       {/* Loading and error overlays */}
       {loading && (
-        <div className="absolute right-4 top-24 z-[1000] flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm text-slate-600 shadow-md sm:right-6">
+        <div className="absolute right-4 top-24 z-[1000] flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-600 dark:text-slate-300 shadow-md sm:right-6">
           <LoaderCircle size={16} className="animate-spin" />
           Loading issues…
         </div>
       )}
 
       {error && (
-        <div className="absolute left-4 right-4 top-24 z-[1000] mx-auto max-w-md rounded-xl bg-white p-4 shadow-lg ring-1 ring-red-200">
-          <p className="text-sm text-red-700">{error}</p>
+        <div className="absolute left-4 right-4 top-24 z-[1000] mx-auto max-w-md rounded-xl bg-white dark:bg-slate-900 p-4 shadow-lg ring-1 ring-red-200 dark:ring-red-800">
+          <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
           <button
             onClick={loadComplaints}
-            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-teal-800 px-3 py-2 text-sm font-semibold text-white hover:bg-teal-900"
+            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-teal-800 px-3 py-2 text-sm font-semibold text-white hover:bg-teal-900 dark:hover:bg-teal-700"
           >
             <RefreshCw size={15} />
             Try again
@@ -197,12 +197,12 @@ export default function IssuesMap() {
       )}
 
       {!loading && !error && complaints.length === 0 && (
-        <div className="absolute left-1/2 top-1/2 z-[1000] w-[calc(100%-32px)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white p-5 text-center shadow-lg">
-          <MapPin className="mx-auto text-slate-400" size={28} />
-          <p className="mt-2 font-semibold text-slate-800">
+        <div className="absolute left-1/2 top-1/2 z-[1000] w-[calc(100%-32px)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white dark:bg-slate-900 p-5 text-center shadow-lg">
+          <MapPin className="mx-auto text-slate-400 dark:text-slate-400" size={28} />
+          <p className="mt-2 font-semibold text-slate-800 dark:text-slate-200">
             No issues to show yet
           </p>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Reported civic issues will appear on this map.
           </p>
         </div>

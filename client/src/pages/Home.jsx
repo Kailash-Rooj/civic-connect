@@ -19,12 +19,12 @@ export default function Home() {
   const reportLink = user ? "/citizen/report" : "/register";
 
   return (
-    <div className="bg-white text-slate-900">
+    <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100">
 
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-white dark:bg-slate-900">
 
         <div className="mx-auto grid min-h-[calc(100vh-65px)] max-w-[1700px] lg:grid-cols-[34%_66%]">
 
@@ -34,7 +34,7 @@ export default function Home() {
             <div className="w-full max-w-xl">
 
               {/* SMALL LABEL */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-widest text-slate-500">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
                 <span>Citizens</span>
                 <span>×</span>
                 <span>Cleaner cities</span>
@@ -43,18 +43,18 @@ export default function Home() {
               </div>
 
               {/* HEADING */}
-              <h1 className="mt-7 text-5xl font-bold leading-[0.98] tracking-tight text-slate-950 sm:text-6xl xl:text-7xl">
+              <h1 className="mt-7 text-5xl font-bold leading-[0.98] tracking-tight text-slate-950 dark:text-slate-100 sm:text-6xl xl:text-7xl">
                 See a problem?
                 <br />
                 Make it{" "}
-                <span className="text-teal-700">
+                <span className="text-teal-700 dark:text-teal-300">
                   visible.
                 </span>
               </h1>
 
               {/* DESCRIPTION */}
-              <p className="mt-7 max-w-lg text-base leading-7 text-slate-600 sm:text-lg">
-                <span className="font-semibold text-slate-800">
+              <p className="mt-7 max-w-lg text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
+                <span className="font-semibold text-slate-800 dark:text-slate-200">
                   Report civic issues with a photo and exact location.
                 </span>{" "}
                 Track the progress and see evidence when the work is done.
@@ -65,7 +65,7 @@ export default function Home() {
 
                 <Link
                   to={reportLink}
-                  className="group flex items-center gap-3 rounded-xl bg-teal-800 px-5 py-3.5 font-semibold text-white shadow-lg shadow-teal-900/10 transition hover:bg-teal-900"
+                  className="group flex items-center gap-3 rounded-xl bg-teal-800 px-5 py-3.5 font-semibold text-white shadow-lg shadow-teal-900/10 transition hover:bg-teal-900 dark:hover:bg-teal-700"
                 >
                   <Camera size={19} />
                   Report an issue
@@ -77,7 +77,7 @@ export default function Home() {
 
                 <Link
                   to="/issues"
-                  className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 font-semibold text-slate-800 transition hover:bg-slate-50"
+                  className="flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-5 py-3.5 font-semibold text-slate-800 dark:text-slate-200 transition hover:bg-slate-50 dark:hover:bg-slate-800"
                 >
                   Explore public issues
                 </Link>
@@ -90,10 +90,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <MapPin
                     size={22}
-                    className="shrink-0 text-teal-700"
+                    className="shrink-0 text-teal-700 dark:text-teal-300"
                   />
 
-                  <span className="text-xs font-medium text-slate-600 sm:text-sm">
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm">
                     Exact location
                   </span>
                 </div>
@@ -101,10 +101,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <CheckCircle2
                     size={22}
-                    className="shrink-0 text-teal-700"
+                    className="shrink-0 text-teal-700 dark:text-teal-300"
                   />
 
-                  <span className="text-xs font-medium text-slate-600 sm:text-sm">
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm">
                     Transparent process
                   </span>
                 </div>
@@ -112,10 +112,10 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <ClipboardList
                     size={22}
-                    className="shrink-0 text-teal-700"
+                    className="shrink-0 text-teal-700 dark:text-teal-300"
                   />
 
-                  <span className="text-xs font-medium text-slate-600 sm:text-sm">
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm">
                     Real impact
                   </span>
                 </div>
@@ -149,7 +149,7 @@ export default function Home() {
                     BEFORE
                   </p>
 
-                  <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-slate-300">
+                  <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-slate-300 dark:text-slate-400">
                     Reported by a citizen
                   </p>
                 </div>
@@ -168,12 +168,12 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/5" />
 
                 {/* AFTER LABEL */}
-                <div className="absolute right-5 top-8 rounded-xl bg-white/90 px-4 py-2.5 text-slate-900 shadow-lg backdrop-blur">
+                <div className="absolute right-5 top-8 rounded-xl bg-white/90 dark:bg-slate-900/90 px-4 py-2.5 text-slate-900 dark:text-slate-100 shadow-lg backdrop-blur">
                   <p className="text-lg font-bold leading-none">
                     AFTER
                   </p>
 
-                  <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-slate-500">
+                  <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
                     Resolved by administration
                   </p>
                 </div>
@@ -189,7 +189,7 @@ export default function Home() {
 
 
             {/* CENTER ARROW */}
-            <div className="absolute left-1/2 top-1/2 z-10 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-slate-800 shadow-xl ring-4 ring-white/30">
+            <div className="absolute left-1/2 top-1/2 z-10 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 shadow-xl ring-4 ring-white/30">
               <ArrowRight size={24} />
             </div>
 
@@ -212,7 +212,7 @@ export default function Home() {
       {/* =====================================================
           SECTION 2 — REPORT → TRACK → VERIFY
       ===================================================== */}
-      <section className="border-y border-slate-200 bg-slate-50">
+      <section className="border-y border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
 
         <div className="mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-12">
 
@@ -220,11 +220,11 @@ export default function Home() {
 
             {/* TITLE */}
             <div>
-              <p className="text-3xl font-bold leading-tight text-slate-950">
+              <p className="text-3xl font-bold leading-tight text-slate-950 dark:text-slate-100">
                 From reporting
                 <br />
                 to{" "}
-                <span className="text-teal-700">
+                <span className="text-teal-700 dark:text-teal-300">
                   real change.
                 </span>
               </p>
@@ -235,9 +235,9 @@ export default function Home() {
             <div className="grid gap-3 md:grid-cols-3">
 
               {/* STEP 1 */}
-              <div className="flex min-h-[125px] items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex min-h-[125px] items-start gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 shadow-sm">
 
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-red-50 text-red-500">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-red-50 dark:bg-red-950/40 text-red-500 dark:text-red-400">
                   <Camera size={21} />
                 </div>
 
@@ -246,7 +246,7 @@ export default function Home() {
                     1. Report
                   </p>
 
-                  <p className="mt-1 text-sm leading-5 text-slate-600">
+                  <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
                     Take a photo, describe the issue and mark the exact
                     location.
                   </p>
@@ -256,9 +256,9 @@ export default function Home() {
 
 
               {/* STEP 2 */}
-              <div className="flex min-h-[125px] items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex min-h-[125px] items-start gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 shadow-sm">
 
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300">
                   <Clock3 size={21} />
                 </div>
 
@@ -267,7 +267,7 @@ export default function Home() {
                     2. Track
                   </p>
 
-                  <p className="mt-1 text-sm leading-5 text-slate-600">
+                  <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
                     Follow the status as the issue moves from submitted
                     to in progress.
                   </p>
@@ -277,9 +277,9 @@ export default function Home() {
 
 
               {/* STEP 3 */}
-              <div className="flex min-h-[125px] items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex min-h-[125px] items-start gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 shadow-sm">
 
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-300">
                   <CheckCircle2 size={21} />
                 </div>
 
@@ -288,7 +288,7 @@ export default function Home() {
                     3. Verify
                   </p>
 
-                  <p className="mt-1 text-sm leading-5 text-slate-600">
+                  <p className="mt-1 text-sm leading-5 text-slate-600 dark:text-slate-300">
                     See the resolution with after-photo evidence.
                   </p>
                 </div>
@@ -305,7 +305,7 @@ export default function Home() {
           SECTION 3 — COMMON ISSUES
           COMPACT, NOT A HUGE EXTRA PAGE
       ===================================================== */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-white dark:bg-slate-900">
 
         <div className="mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-12">
 
@@ -314,13 +314,13 @@ export default function Home() {
             {/* LEFT */}
             <div>
 
-              <p className="text-2xl font-bold leading-tight text-slate-950">
+              <p className="text-2xl font-bold leading-tight text-slate-950 dark:text-slate-100">
                 Common civic issues
               </p>
 
               <Link
                 to="/issues"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-900"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 dark:text-teal-300 hover:text-teal-900 dark:hover:text-teal-200"
               >
                 Explore public issues
                 <ArrowRight size={16} />
@@ -333,8 +333,8 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
 
               {/* ROADS */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-slate-100 text-slate-700">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-center shadow-sm">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
                   <ClipboardList size={22} />
                 </div>
 
@@ -342,15 +342,15 @@ export default function Home() {
                   Roads & Potholes
                 </p>
 
-                <p className="mt-1 text-xs leading-4 text-slate-500">
+                <p className="mt-1 text-xs leading-4 text-slate-500 dark:text-slate-400">
                   Damaged roads and potholes
                 </p>
               </div>
 
 
               {/* GARBAGE */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-emerald-50 text-emerald-600">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-center shadow-sm">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-300">
                   <Trash2 size={22} />
                 </div>
 
@@ -358,15 +358,15 @@ export default function Home() {
                   Garbage
                 </p>
 
-                <p className="mt-1 text-xs leading-4 text-slate-500">
+                <p className="mt-1 text-xs leading-4 text-slate-500 dark:text-slate-400">
                   Overflowing bins and waste
                 </p>
               </div>
 
 
               {/* STREETLIGHTS */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-amber-50 text-amber-600">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-center shadow-sm">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-300">
                   <Lightbulb size={22} />
                 </div>
 
@@ -374,15 +374,15 @@ export default function Home() {
                   Streetlights
                 </p>
 
-                <p className="mt-1 text-xs leading-4 text-slate-500">
+                <p className="mt-1 text-xs leading-4 text-slate-500 dark:text-slate-400">
                   Broken or non-working lights
                 </p>
               </div>
 
 
               {/* WATER */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-blue-600">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-center shadow-sm">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300">
                   <Droplets size={22} />
                 </div>
 
@@ -390,15 +390,15 @@ export default function Home() {
                   Water Supply
                 </p>
 
-                <p className="mt-1 text-xs leading-4 text-slate-500">
+                <p className="mt-1 text-xs leading-4 text-slate-500 dark:text-slate-400">
                   Supply and leakage issues
                 </p>
               </div>
 
 
               {/* DRAINAGE */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-cyan-50 text-cyan-600">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-center shadow-sm">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-cyan-50 dark:bg-cyan-950/40 text-cyan-600 dark:text-cyan-300">
                   <Waves size={22} />
                 </div>
 
@@ -406,7 +406,7 @@ export default function Home() {
                   Drainage
                 </p>
 
-                <p className="mt-1 text-xs leading-4 text-slate-500">
+                <p className="mt-1 text-xs leading-4 text-slate-500 dark:text-slate-400">
                   Blocked drains and waterlogging
                 </p>
               </div>
@@ -420,7 +420,7 @@ export default function Home() {
       {/* =====================================================
           COMPACT FOOTER
       ===================================================== */}
-      <footer className="border-t bg-slate-950 text-slate-400">
+      <footer className="border-t bg-slate-950 dark:bg-black text-slate-400 dark:text-slate-400">
 
         <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-4 px-6 py-6 sm:flex-row sm:items-center sm:px-10 lg:px-12">
 

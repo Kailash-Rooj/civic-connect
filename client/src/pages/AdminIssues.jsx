@@ -67,19 +67,19 @@ export default function AdminIssues() {
   function getStatusStyle(status) {
     switch (status) {
       case "submitted":
-        return "bg-amber-50 text-amber-700 border-amber-200";
+        return "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800";
 
       case "in_progress":
-        return "bg-blue-50 text-blue-700 border-blue-200";
+        return "bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800";
 
       case "resolved":
-        return "bg-emerald-50 text-emerald-700 border-emerald-200";
+        return "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800";
 
       case "cancelled":
-        return "bg-red-50 text-red-700 border-red-200";
+        return "bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800";
 
       default:
-        return "bg-slate-50 text-slate-700 border-slate-200";
+        return "bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700";
     }
   }
 
@@ -133,11 +133,11 @@ export default function AdminIssues() {
       <div className="flex flex-wrap items-end justify-between gap-4">
 
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
             Complaints
           </h1>
 
-          <p className="mt-1 text-slate-600">
+          <p className="mt-1 text-slate-600 dark:text-slate-300">
             Review and resolve civic issues.
           </p>
         </div>
@@ -154,7 +154,7 @@ export default function AdminIssues() {
               setParams({});
             }
           }}
-          className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-600"
+          className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 text-sm outline-none focus:border-teal-600 dark:focus:border-teal-400"
         >
           <option value="">All</option>
 
@@ -182,7 +182,7 @@ export default function AdminIssues() {
         {items.map((complaint) => (
           <div
             key={complaint._id}
-            className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+            className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm"
           >
 
             {/* CARD CONTENT */}
@@ -194,17 +194,17 @@ export default function AdminIssues() {
                 <div className="min-w-0">
 
                   {/* COMPLAINT ID */}
-                  <p className="text-xs font-bold tracking-wide text-teal-700">
+                  <p className="text-xs font-bold tracking-wide text-teal-700 dark:text-teal-300">
                     {complaint.complaintId}
                   </p>
 
                   {/* CATEGORY */}
-                  <h2 className="mt-1 text-lg font-semibold text-slate-900">
+                  <h2 className="mt-1 text-lg font-semibold text-slate-900 dark:text-slate-100">
                     {complaint.category}
                   </h2>
 
                   {/* DESCRIPTION */}
-                  <p className="mt-1 text-sm leading-6 text-slate-600">
+                  <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">
                     {complaint.description}
                   </p>
                 </div>
@@ -223,13 +223,13 @@ export default function AdminIssues() {
               </div>
 
               {/* REPORTER INFO */}
-              <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3">
+              <div className="mt-4 rounded-xl bg-slate-50 dark:bg-slate-950 px-4 py-3">
 
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-slate-400">
                   Reporter
                 </p>
 
-                <p className="mt-1 text-sm text-slate-700">
+                <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">
                   {complaint.reporter?.fullName ||
                     "Citizen"}
 
@@ -239,7 +239,7 @@ export default function AdminIssues() {
                     "No phone"}
                 </p>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                   Department:{" "}
                   {complaint.department}
                 </p>
@@ -249,7 +249,7 @@ export default function AdminIssues() {
             {/* ACTIONS */}
             {complaint.status !== "resolved" &&
               complaint.status !== "cancelled" && (
-                <div className="border-t bg-slate-50 px-5 py-4">
+                <div className="border-t bg-slate-50 dark:bg-slate-950 px-5 py-4">
 
                   <div className="flex flex-wrap gap-2">
 
@@ -266,7 +266,7 @@ export default function AdminIssues() {
                             "in_progress"
                           )
                         }
-                        className="flex items-center gap-2 rounded-lg bg-teal-800 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-900 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex items-center gap-2 rounded-lg bg-teal-800 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-900 dark:hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <Play size={15} />
 
@@ -278,7 +278,7 @@ export default function AdminIssues() {
 
                     {/* AFTER PHOTO */}
                     <label
-                      className={`flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 ${
+                      className={`flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 ${
                         busy === complaint._id
                           ? "pointer-events-none opacity-50"
                           : ""
@@ -319,7 +319,7 @@ export default function AdminIssues() {
                           "cancelled"
                         )
                       }
-                      className="flex items-center gap-2 rounded-lg border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex items-center gap-2 rounded-lg border border-red-200 dark:border-red-800 bg-white dark:bg-slate-900 px-4 py-2 text-sm font-semibold text-red-700 dark:text-red-300 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <XCircle size={16} />
 
@@ -327,7 +327,7 @@ export default function AdminIssues() {
                     </button>
                   </div>
 
-                  <p className="mt-3 text-xs text-slate-500">
+                  <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
                     Upload the after photo to mark
                     this complaint as resolved.
                   </p>
@@ -336,7 +336,7 @@ export default function AdminIssues() {
 
             {/* RESOLVED MESSAGE */}
             {complaint.status === "resolved" && (
-              <div className="flex items-center gap-2 border-t bg-emerald-50 px-5 py-3 text-sm font-medium text-emerald-700">
+              <div className="flex items-center gap-2 border-t bg-emerald-50 dark:bg-emerald-950/40 px-5 py-3 text-sm font-medium text-emerald-700 dark:text-emerald-300">
                 <CircleCheck size={17} />
 
                 Complaint resolved
@@ -345,7 +345,7 @@ export default function AdminIssues() {
 
             {/* CANCELLED MESSAGE */}
             {complaint.status === "cancelled" && (
-              <div className="flex items-center gap-2 border-t bg-red-50 px-5 py-3 text-sm font-medium text-red-700">
+              <div className="flex items-center gap-2 border-t bg-red-50 dark:bg-red-950/40 px-5 py-3 text-sm font-medium text-red-700 dark:text-red-300">
                 <XCircle size={17} />
 
                 Complaint cancelled
@@ -356,13 +356,13 @@ export default function AdminIssues() {
 
         {/* EMPTY STATE */}
         {!items.length && (
-          <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-12 text-center">
 
-            <p className="font-medium text-slate-700">
+            <p className="font-medium text-slate-700 dark:text-slate-200">
               No complaints found.
             </p>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
               Try changing the status filter.
             </p>
 
@@ -374,7 +374,7 @@ export default function AdminIssues() {
       {pendingPhoto && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
 
-          <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl">
+          <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-2xl">
 
             {/* MODAL HEADER */}
             <div className="p-5 pb-3">
@@ -382,11 +382,11 @@ export default function AdminIssues() {
               <div className="flex items-start justify-between gap-4">
 
                 <div>
-                  <h2 className="text-lg font-bold text-slate-900">
+                  <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                     Preview after photo
                   </h2>
 
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     Check the photo before marking
                     the complaint as resolved.
                   </p>
@@ -394,7 +394,7 @@ export default function AdminIssues() {
 
                 <button
                   onClick={closePhotoPreview}
-                  className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+                  className="rounded-lg p-2 text-slate-400 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-700"
                   aria-label="Close"
                 >
                   <XCircle size={20} />
@@ -406,7 +406,7 @@ export default function AdminIssues() {
             {/* ACTUAL IMAGE PREVIEW */}
             <div className="px-5">
 
-              <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+              <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
 
                 <img
                   src={pendingPhoto.previewUrl}
@@ -421,17 +421,17 @@ export default function AdminIssues() {
             {/* FILE INFO */}
             <div className="px-5 pt-4">
 
-              <div className="rounded-xl bg-slate-50 p-4">
+              <div className="rounded-xl bg-slate-50 dark:bg-slate-950 p-4">
 
-                <p className="text-xs font-bold tracking-wide text-teal-700">
+                <p className="text-xs font-bold tracking-wide text-teal-700 dark:text-teal-300">
                   {pendingPhoto.complaintIdText}
                 </p>
 
-                <p className="mt-1 font-semibold text-slate-900">
+                <p className="mt-1 font-semibold text-slate-900 dark:text-slate-100">
                   {pendingPhoto.category}
                 </p>
 
-                <p className="mt-2 truncate text-sm text-slate-500">
+                <p className="mt-2 truncate text-sm text-slate-500 dark:text-slate-400">
                   {pendingPhoto.file.name}
                 </p>
 
@@ -448,7 +448,7 @@ export default function AdminIssues() {
                   busy ===
                   pendingPhoto.complaintId
                 }
-                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+                className="rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50"
               >
                 Cancel
               </button>
@@ -460,7 +460,7 @@ export default function AdminIssues() {
                   busy ===
                   pendingPhoto.complaintId
                 }
-                className="rounded-lg bg-teal-800 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-900 disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-lg bg-teal-800 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-900 dark:hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Confirm & Resolve
               </button>

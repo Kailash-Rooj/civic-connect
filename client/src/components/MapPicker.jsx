@@ -145,7 +145,7 @@ export default function MapPicker({ value, onChange }) {
       </button>
 
       {value && (
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
           Location: {value[0].toFixed(5)},{" "}
           {value[1].toFixed(5)}
         </p>

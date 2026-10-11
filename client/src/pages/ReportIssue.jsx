@@ -275,14 +275,14 @@ export default function ReportIssue() {
       <div className="mx-auto max-w-3xl px-4 py-10">
         {/* LANGUAGE SELECTOR */}
         <div className="mb-6 flex items-center justify-between gap-4">
-          <p className="text-sm font-medium text-slate-500">
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
             Choose your language
           </p>
 
           <select
             value={i18n.resolvedLanguage || i18n.language}
             onChange={(e) => i18n.changeLanguage(e.target.value)}
-            className="rounded-lg border bg-white px-3 py-2 text-sm outline-none focus:border-teal-600"
+            className="rounded-lg border bg-white dark:bg-slate-900 px-3 py-2 text-sm outline-none focus:border-teal-600 dark:focus:border-teal-400"
             aria-label="Language"
           >
             <option value="en">English</option>
@@ -293,12 +293,12 @@ export default function ReportIssue() {
 
         {/* TITLE */}
         <h1 className="text-3xl font-bold">{t("report.title")}</h1>
-        <p className="mt-2 text-slate-600">{t("report.help")}</p>
+        <p className="mt-2 text-slate-600 dark:text-slate-300">{t("report.help")}</p>
 
         {/* FORM */}
         <form
           onSubmit={submit}
-          className="mt-8 space-y-7 rounded-2xl border bg-white p-5 shadow-sm"
+          className="mt-8 space-y-7 rounded-2xl border bg-white dark:bg-slate-900 p-5 shadow-sm"
         >
           {/* CATEGORY */}
           <div>
@@ -308,14 +308,25 @@ export default function ReportIssue() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-              className="mt-2 w-full rounded-lg border p-3"
+              className="mt-2 w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900
+                        dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
             >
-              <option value="">{t("report.selectCategory")}</option>
-              {categories.map((c) => (
-                <option key={c} value={c}>
-                  {t(`categories.${categoryKeys[c]}`)}
+                <option
+                  value=""
+                  className="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100"
+                >
+                  {t("report.selectCategory")}
                 </option>
-              ))}
+
+                {categories.map((c) => (
+                  <option
+                    key={c}
+                    value={c}
+                    className="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100"
+                  >
+                    {t(`categories.${categoryKeys[c]}`)}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -333,7 +344,7 @@ export default function ReportIssue() {
               placeholder={t("report.descriptionPlaceholder")}
             />
 
-            <p className="mt-1 text-right text-xs text-slate-500">
+            <p className="mt-1 text-right text-xs text-slate-500 dark:text-slate-400">
               {description.length}/500
             </p>
           </div>
@@ -341,7 +352,7 @@ export default function ReportIssue() {
           {/* LOCATION */}
           <div>
             <label className="font-medium">{t("report.location")}</label>
-            <p className="mb-2 text-sm text-slate-500">
+            <p className="mb-2 text-sm text-slate-500 dark:text-slate-400">
               {t("report.locationHelp")}
             </p>
 
@@ -352,7 +363,7 @@ export default function ReportIssue() {
           <div>
             <label className="font-medium">{t("report.beforePhoto")}</label>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
               Take a live photo of the civic issue using your camera. Gallery uploads are not available.
             </p>
 
@@ -360,13 +371,13 @@ export default function ReportIssue() {
               <button
                 type="button"
                 onClick={openCamera}
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-teal-800 px-4 py-3 font-semibold text-white hover:bg-teal-900"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-teal-800 px-4 py-3 font-semibold text-white hover:bg-teal-900 dark:hover:bg-teal-700"
               >
                 <Camera size={18} />
                 Open Camera
               </button>
             ) : (
-              <div className="mt-3 rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200">
+              <div className="mt-3 rounded-xl bg-slate-50 dark:bg-slate-950 p-3 ring-1 ring-slate-200 dark:ring-slate-700">
                 {photoPreview && (
                   <img
                     src={photoPreview}
@@ -375,14 +386,14 @@ export default function ReportIssue() {
                   />
                 )}
 
-                <p className="mt-2 text-sm font-medium text-emerald-700">
+                <p className="mt-2 text-sm font-medium text-emerald-700 dark:text-emerald-300">
                   Photo captured successfully
                 </p>
 
                 <button
                   type="button"
                   onClick={() => setFile(null)}
-                  className="mt-2 flex items-center gap-2 rounded-lg border bg-white px-3 py-2 text-sm"
+                  className="mt-2 flex items-center gap-2 rounded-lg border bg-white dark:bg-slate-900 px-3 py-2 text-sm"
                 >
                   <RotateCcw size={15} />
                   Retake photo
@@ -391,17 +402,17 @@ export default function ReportIssue() {
             )}
 
             {cameraError && (
-              <p className="mt-2 text-sm text-red-600">{cameraError}</p>
+              <p className="mt-2 text-sm text-red-600 dark:text-red-300">{cameraError}</p>
             )}
 
-            <p className="mt-2 text-xs text-slate-500">
+            <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
               Exactly one photo, maximum 5 MB.
             </p>
           </div>
 
           {/* ERROR */}
           {err && (
-            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">
+            <div className="rounded-lg bg-red-50 dark:bg-red-950/40 p-3 text-sm text-red-700 dark:text-red-300">
               {err}
             </div>
           )}
@@ -420,14 +431,14 @@ export default function ReportIssue() {
       {/* CAMERA MODAL */}
       {cameraOpen && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/80 p-4">
-          <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl">
+          <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-2xl">
             <div className="flex items-center justify-between p-4">
-              <h2 className="font-bold text-slate-900">Capture civic issue</h2>
+              <h2 className="font-bold text-slate-900 dark:text-slate-100">Capture civic issue</h2>
 
               <button
                 type="button"
                 onClick={closeCamera}
-                className="rounded-full p-2 hover:bg-slate-100"
+                className="rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
                 aria-label="Close camera"
               >
                 <X size={20} />
@@ -443,7 +454,7 @@ export default function ReportIssue() {
             />
 
             {cameraError && (
-              <p className="px-4 pt-3 text-sm text-red-600">{cameraError}</p>
+              <p className="px-4 pt-3 text-sm text-red-600 dark:text-red-300">{cameraError}</p>
             )}
 
             <div className="flex gap-3 p-4">
@@ -471,11 +482,11 @@ export default function ReportIssue() {
       {/* DUPLICATE MODAL */}
       {duplicate && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4">
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+          <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-900 p-6 shadow-2xl">
             {!supportSuccess ? (
               <>
                 {/* WARNING ICON */}
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-amber-100 text-2xl">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/40 text-2xl">
                   ⚠️
                 </div>
 
@@ -483,23 +494,23 @@ export default function ReportIssue() {
                   {t("duplicate.title")}
                 </h2>
 
-                <p className="mt-2 text-center text-sm text-slate-600">
+                <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-300">
                   {t("duplicate.message")}
                 </p>
 
                 {/* EXISTING COMPLAINT */}
-                <div className="mt-5 rounded-xl bg-slate-50 p-4">
-                  <p className="text-sm font-semibold text-teal-800">
+                <div className="mt-5 rounded-xl bg-slate-50 dark:bg-slate-950 p-4">
+                  <p className="text-sm font-semibold text-teal-800 dark:text-teal-300">
                     {duplicate.category
                       ? t(`categories.${categoryKeys[duplicate.category]}`)
                       : ""}
                   </p>
 
-                  <p className="mt-1 text-sm text-slate-600">
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
                     {duplicate.description}
                   </p>
 
-                  <div className="mt-3 text-xs text-slate-500">
+                  <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
                     👥 {duplicate.affectedCount || 1} {t("duplicate.affected")}
                   </div>
                 </div>
@@ -524,7 +535,7 @@ export default function ReportIssue() {
                   <button
                     type="button"
                     onClick={viewIssue}
-                    className="w-full rounded-xl border border-slate-300 px-4 py-3 font-semibold"
+                    className="w-full rounded-xl border border-slate-300 dark:border-slate-600 px-4 py-3 font-semibold"
                   >
                     {t("duplicate.view")}
                   </button>
@@ -532,7 +543,7 @@ export default function ReportIssue() {
                   <button
                     type="button"
                     onClick={closeDuplicate}
-                    className="w-full px-4 py-2 text-sm text-slate-500"
+                    className="w-full px-4 py-2 text-sm text-slate-500 dark:text-slate-400"
                   >
                     {t("duplicate.close")}
                   </button>
@@ -541,7 +552,7 @@ export default function ReportIssue() {
             ) : (
               <>
                 {/* SUCCESS ICON */}
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-2xl">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/40 text-2xl">
                   ✓
                 </div>
 
@@ -549,11 +560,11 @@ export default function ReportIssue() {
                   {t("duplicate.successTitle")}
                 </h2>
 
-                <p className="mt-2 text-center text-sm text-slate-600">
+                <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-300">
                   {t("duplicate.successMessage")}
                 </p>
 
-                <div className="mt-5 rounded-xl bg-green-50 p-4 text-center">
+                <div className="mt-5 rounded-xl bg-green-50 dark:bg-green-950/40 p-4 text-center">
                   <p className="text-sm font-semibold text-green-800">
                     👥 {duplicate.affectedCount || 1} {t("duplicate.affected")}
                   </p>
@@ -572,7 +583,7 @@ export default function ReportIssue() {
                   <button
                     type="button"
                     onClick={() => nav("/citizen")}
-                    className="w-full rounded-xl border border-slate-300 px-4 py-3 font-semibold"
+                    className="w-full rounded-xl border border-slate-300 dark:border-slate-600 px-4 py-3 font-semibold"
                   >
                     {t("duplicate.dashboard")}
                   </button>
