@@ -63,6 +63,12 @@ export default function IssueDetails() {
   const [feedback, setFeedback] = useState("");
   const [loadingAction, setLoadingAction] = useState(false);
 
+  const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState("");
+  const [commentsLoading, setCommentsLoading] = useState(true);
+  const [commentSubmitting, setCommentSubmitting] = useState(false);
+  const [commentError, setCommentError] = useState("");
+
   useEffect(() => {
     api
       .get(`/api/complaints/${id}`)
@@ -79,6 +85,44 @@ export default function IssueDetails() {
       });
   }, [id]);
 
+
+  useEffect(() => {
+    let active = true;
+
+    async function fetchComments() {
+      setCommentsLoading(true);
+      setCommentError("");
+
+      try {
+        const response = await api.get(
+          `/api/complaints/${id}/comments`
+        );
+
+        if (active) {
+          setComments(response.data.comments || []);
+        }
+      } catch (error) {
+        if (active) {
+          setCommentError(
+            error.response?.data?.message ||
+              "Unable to load comments."
+          );
+        }
+      } finally {
+        if (active) {
+          setCommentsLoading(false);
+        }
+      }
+    }
+
+    fetchComments();
+
+    return () => {
+      active = false;
+    };
+  }, [id]);
+
+
   async function support() {
     try {
       setLoadingAction(true);
@@ -92,6 +136,40 @@ export default function IssueDetails() {
       setLoadingAction(false);
     }
   }
+
+
+async function postComment(e) {
+  e.preventDefault();
+
+  const text = commentText.trim();
+
+  if (!text || text.length > 500) return;
+
+  setCommentSubmitting(true);
+  setCommentError("");
+
+  try {
+    const response = await api.post(
+      `/api/complaints/${id}/comments`,
+      { text }
+    );
+
+    setComments((previous) => [
+      response.data.comment,
+      ...previous,
+    ]);
+
+    setCommentText("");
+  } catch (error) {
+    setCommentError(
+      error.response?.data?.message ||
+        "Unable to post comment."
+    );
+  } finally {
+    setCommentSubmitting(false);
+  }
+}
+
 
   async function cancel() {
     if (!reason.trim()) return;
@@ -199,9 +277,9 @@ export default function IssueDetails() {
   const StatusIcon = status.icon;
 
   return (
-    <div className="min-h-screen bg-[#f8fafb]">
+    <div className="min-h-screen bg-[#f8fafb] dark:bg-slate-950">
 
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-10">
+      <div className="mx-auto max-w-6xl px-4 py-8 text-slate-900 dark:text-slate-100 sm:px-6 lg:py-10">
 
         {/* =====================================================
             BACK
@@ -550,6 +628,114 @@ export default function IssueDetails() {
 
             </section>
 
+            
+
+{/* COMMUNITY COMMENTS */}
+<section className="rounded-3xl bg-white dark:bg-slate-900 p-6 shadow-sm ring-1 ring-slate-200/70 dark:ring-slate-700/70 sm:p-7">
+  <div className="flex items-center gap-3">
+    <div className="grid h-10 w-10 place-items-center rounded-xl bg-teal-50 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300">
+      <MessageSquare size={19} />
+    </div>
+
+    <div>
+      <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+        Community comments
+      </h2>
+      <p className="text-xs text-slate-500 dark:text-slate-400">
+        Share information about this issue
+      </p>
+    </div>
+  </div>
+
+  {user?.role === "citizen" && c.status !== "cancelled" && (
+    <form onSubmit={postComment} className="mt-5">
+      <textarea
+        value={commentText}
+        onChange={(e) => setCommentText(e.target.value)}
+        maxLength={500}
+        rows={3}
+        placeholder="Write a comment..."
+        className="w-full resize-y rounded-xl bg-slate-50 dark:bg-slate-950 px-4 py-3 text-sm text-slate-800 dark:text-slate-200 outline-none ring-1 ring-slate-200 dark:ring-slate-700 focus:ring-2 focus:ring-teal-600"
+      />
+
+      <div className="mt-2 flex items-center justify-between gap-3">
+        <span className="text-xs text-slate-400">
+          {commentText.length}/500
+        </span>
+
+        <button
+          type="submit"
+          disabled={!commentText.trim() || commentSubmitting}
+          className="rounded-xl bg-teal-800 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-900 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {commentSubmitting ? "Posting..." : "Post comment"}
+        </button>
+      </div>
+    </form>
+  )}
+
+  {!user && (
+    <p className="mt-5 rounded-xl bg-slate-50 dark:bg-slate-950 p-3 text-sm text-slate-500 dark:text-slate-400">
+      Log in as a citizen to post a comment. You can still read existing comments.
+    </p>
+  )}
+
+  {user && user.role !== "citizen" && (
+    <p className="mt-5 rounded-xl bg-slate-50 dark:bg-slate-950 p-3 text-sm text-slate-500 dark:text-slate-400">
+      Comments can be posted by citizens only.
+    </p>
+  )}
+
+  {c.status === "cancelled" && (
+    <p className="mt-5 rounded-xl bg-slate-50 dark:bg-slate-950 p-3 text-sm text-slate-500 dark:text-slate-400">
+      This issue is cancelled. Existing comments remain visible, but new comments are disabled.
+    </p>
+  )}
+
+  {commentError && (
+    <p role="alert" className="mt-4 text-sm text-red-600 dark:text-red-400">
+      {commentError}
+    </p>
+  )}
+
+  <div className="mt-6 space-y-4">
+    {commentsLoading ? (
+      <p className="text-sm text-slate-500 dark:text-slate-400">
+        Loading comments...
+      </p>
+    ) : comments.length === 0 ? (
+      <p className="rounded-xl bg-slate-50 dark:bg-slate-950 p-4 text-sm text-slate-500 dark:text-slate-400">
+        No comments yet. Be the first to share an update.
+      </p>
+    ) : (
+      comments.map((comment) => (
+        <article
+          key={comment._id}
+          className="rounded-2xl border border-slate-100 dark:border-slate-800 p-4"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">
+              {comment.author?.fullName || "Citizen"}
+            </p>
+
+            <time
+              dateTime={comment.createdAt}
+              className="text-xs text-slate-400"
+            >
+              {comment.createdAt
+                ? new Date(comment.createdAt).toLocaleString()
+                : ""}
+            </time>
+          </div>
+
+          <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-slate-600 dark:text-slate-300">
+            {comment.text}
+          </p>
+        </article>
+      ))
+    )}
+  </div>
+</section>
 
             {/* PUBLIC RATING */}
             {c.rating && !c.isReporter && (
