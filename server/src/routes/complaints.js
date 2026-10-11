@@ -1,3 +1,4 @@
+const comments = require("../controllers/commentController");
 const express = require("express");
 const multer = require("multer");
 const { requireAuth, requireRole, optionalAuth } = require("../middleware/auth");
@@ -15,6 +16,7 @@ router.post("/:id/rating", requireAuth, requireRole("citizen"), c.rate);
 router.delete("/:id/rating", requireAuth, requireRole("citizen"), c.deleteRating);
 router.get("/admin/all", requireAuth, requireRole("admin"), c.adminList);
 router.patch("/admin/:id", requireAuth, requireRole("admin"), upload.single("afterPhoto"), c.adminUpdate);
-// router.get("/:id", c.getOne);
+router.get("/:id/comments", comments.listComments);
+router.post("/:id/comments", requireAuth, requireRole("citizen"), comments.createComment);
 router.get("/:id", optionalAuth, c.getOne);
 module.exports = router;
