@@ -170,6 +170,18 @@ civic-connect/
 └── README.md
 ```
 
+## Documentation
+
+| Document | Description |
+|---|---|
+| [Technical Design](docs/TECHNICAL_DESIGN.md) | System design, architecture, and complaint lifecycle |
+| [System Architecture Diagram](docs/system-architecture.png) | Visual overview of the application architecture |
+| [Complaint Lifecycle Diagram](docs/Complaint_Lifecycle.png) | Complaint status transitions |
+| [Test Cases](docs/TEST_CASES.md) | Functional and security test scenarios |
+| [Sample Data](docs/sample-data/README.md) | Sample data usage and setup |
+
+
+
 ## Expected Impact
 
 CivicConnect aims to make civic reporting more accessible, reduce duplicate reports, encourage community participation, and improve transparency by making complaint progress and resolution evidence visible.

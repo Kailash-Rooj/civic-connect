@@ -1,0 +1,32 @@
+[
+  {
+    "category": "Roads & Potholes",
+    "description": "A pothole needs repair near the public road.",
+    "location": {
+      "latitude": 22.5726,
+      "longitude": 88.3639
+    },
+    "status": "submitted",
+    "affectedCount": 1
+  },
+  {
+    "category": "Garbage & Waste Management",
+    "description": "Garbage has accumulated near a public collection point.",
+    "location": {
+      "latitude": 22.5740,
+      "longitude": 88.3650
+    },
+    "status": "in-progress",
+    "affectedCount": 3
+  },
+  {
+    "category": "Streetlights",
+    "description": "A streetlight is not working near a residential road.",
+    "location": {
+      "latitude": 22.5705,
+      "longitude": 88.3605
+    },
+    "status": "resolved",
+    "affectedCount": 2
+  }
+]
